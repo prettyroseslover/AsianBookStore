@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Добавить рецензию
+{% endblock %}
+
+{% block button %}
+    <a class="btn btn-outline-primary" href="/account">Личный кабинет</a>
+    <a class="btn btn-outline-primary" href="/busket">Корзина</a>
+	{% if current_user.id == 5 %}
+	<a class="btn btn-outline-primary" href="/admin">Admin</a>
+	{% endif %}
+{% endblock %}
+
+
+{% block body %}
+
+    <h1 align="center"> Оставьте рецензию! </h1>
+
+    <form method="post">
+
+{{ form.csrf_token }}
+	<p>
+        {{ form.book.label() }}
+	    {{ form.book() }}
+	</p>
+	<p>
+	    {{ form.rating.label() }}
+	    {{ form.rating() }}
+	</p>
+        <p>
+	    {{ form.comment.label() }}
+	    {{ form.comment() }}
+	</p>
+	<p>
+	    {{ form.submit() }}
+	</p>
+
+    </form>
+
+    <p><a href="{{ url_for('account') }}">Назад</a></p>
+
+
+{% endblock %}

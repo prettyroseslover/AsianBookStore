@@ -1,0 +1,21 @@
+footer {
+    background-color: #DCDCDC;
+}
+.Row {
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 10px; /*Optional*/
+}
+.Column {
+    display: table-cell;
+    background-color: lightgreen; /*Optional*/
+}
+
+.Cover {
+    height: 20em;
+}
+
+.book {
+    height: 35em;
+}

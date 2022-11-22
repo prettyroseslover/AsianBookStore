@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Личный кабинет
+{% endblock %}
+
+{% block button %}
+    <a class="btn btn-outline-primary" href="/account">Личный кабинет</a>
+    <a class="btn btn-outline-primary" href="/busket">Корзина</a>
+	{% if current_user.id == 5 %}
+	<a class="btn btn-outline-primary" href="/admin">Admin</a>
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+
+    <h1 align="center"> Личный кабинет </h1>
+
+    <h3 align="center"> Измените информацию! </h3>
+
+    <form method="post">
+{{ form.csrf_token }}
+	<p>
+	    {{ form.surname.label() }}
+	    {{ form.surname() }}
+	    {% if form.surname.errors %}
+		{% for error in form.surname.errors %}
+		    {{ error }}
+		{% endfor %}
+	    {% endif %}
+	</p>
+	<p>
+	    {{ form.name.label() }}
+	    {{ form.name() }}
+	    {% if form.name.errors %}
+		{% for error in form.name.errors %}
+		    {{ error }}
+		{% endfor %}
+	    {% endif %}
+	</p>
+    <p>
+	    {{ form.famname.label() }}
+	    {{ form.famname() }}
+	    {% if form.famname.errors %}
+		{% for error in form.famname.errors %}
+		    {{ error }}
+		{% endfor %}
+	    {% endif %}
+	</p>
+    <p>
+	    {{ form.phone_number.label() }}
+	    {{ form.phone_number() }}
+	    {% if form.phone_number.errors %}
+		{% for error in form.phone_number.errors %}
+		    {{ error }}
+		{% endfor %}
+	    {% endif %}
+	</p>
+    <p>
+	    {{ form.address.label() }}
+	    {{ form.address() }}
+	    {% if form.address.errors %}
+		{% for error in form.address.errors %}
+		    {{ error }}
+		{% endfor %}
+	    {% endif %}
+	</p>
+	<p>
+	    {{ form.submit() }}
+	</p>
+
+    </form>
+
+    <p><a href="{{ url_for('account') }}">Назад</a></p>
+
+{% endblock %}

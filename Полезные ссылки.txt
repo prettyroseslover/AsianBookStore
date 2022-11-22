@@ -1,0 +1,4 @@
+https://github.com/XD-DENG/flask-example
+https://github.com/chaotism/handbook
+https://github.com/SergeyZhigalo/bookshop
+https://github.com/UlyanaShabunina/BooksMarket

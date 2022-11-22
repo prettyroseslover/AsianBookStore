@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+На полках не пылятся
+{% endblock %}
+
+{% block button %}
+    {% if flag_btn %}
+    <a class="btn btn-outline-primary" href="/account">Личный кабинет</a>
+    <a class="btn btn-outline-primary" href="/busket">Корзина</a>
+    {% if current_user.id == 5 %}
+	<a class="btn btn-outline-primary" href="/admin">Admin</a>
+	{% endif %}
+
+    {% else %}
+    <a class="btn btn-outline-primary" href="/signin">Регистрация</a>
+     <a class="btn btn-outline-primary" href="/login">Вход</a>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+
+    <h1 align="center"> Тут скоро будет баннер </h1>
+
+    <h2 align="center"> Новинки </h2>
+
+    <div class="Row">
+
+    {% for b in new_books %}
+        <div class="Column">
+            <img src="{{url_for('static', filename=b.image)}}" alt="{{ b.title }}" class="Cover">
+            <h4>
+                {{ b.title }} - {{ b.author }}
+            </h4>
+            <h5> {{ b.price }}₽</h5>
+            <a href="/shelves/{{ b.id_book }}" class="btn btn-warning">Детали</a>
+            {% if b.quantity == 0 %}
+            <h4> Нет в наличии! </h4>
+            {% else %}
+                {% if flag_btn %}
+                 <a href="/shelves/{{b.id_book}}/add" class="btn btn-danger">В корзину</a>
+                {% else %}
+                <a  href="/login" class="btn btn-danger">В корзину</a>
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    </div>
+
+{% endblock %}

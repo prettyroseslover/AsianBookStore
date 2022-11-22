@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Личный кабинет
+{% endblock %}
+
+{% block button %}
+    <a class="btn btn-outline-primary" href="/account">Личный кабинет</a>
+    <a class="btn btn-outline-primary" href="/busket">Корзина</a>
+	{% if current_user.id == 5 %}
+	<a class="btn btn-outline-primary" href="/admin">Admin</a>
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+
+    <h1 align="center"> Личный кабинет </h1>
+    <h3 align="center"> Информация о пользователе </h3>
+    <ul>
+    <li>Логин: {{ current_user.username }}</li>
+    <li>Email: {{ current_user.email }}</li>
+    {% if not flag %}
+        <li>Фамилия: {{ current_user.surname }}</li>
+        <li>Имя: {{ current_user.name }}</li>
+        <li>Отчество: {{ current_user.famname }}</li>
+        <li>Телефон: {{ current_user.phone_number }}</li>
+        <li>Адрес: {{ current_user.address }}</li>
+    {% endif %}
+    </ul>
+
+    {% if flag %}
+    <h3 align="center"> Заполните дополнительную информацию! </h3>
+
+    <form method="post">
+	{{ form.csrf_token }}
+	<p>
+	    {{ form.surname.label() }}
+	    {{ form.surname() }}
+	    {% if form.surname.errors %}
+		{% for error in form.surname.errors %}
+		    {{ error }}
+		{% endfor %}
+	    {% endif %}
+	</p>
+	<p>
+	    {{ form.name.label() }}
+	    {{ form.name() }}
+	    {% if form.name.errors %}
+		{% for error in form.name.errors %}
+		    {{ error }}
+		{% endfor %}
+	    {% endif %}
+	</p>
+    <p>
+	    {{ form.famname.label() }}
+	    {{ form.famname() }}
+	    {% if form.famname.errors %}
+		{% for error in form.famname.errors %}
+		    {{ error }}
+		{% endfor %}
+	    {% endif %}
+	</p>
+    <p>
+	    {{ form.phone_number.label() }}
+	    {{ form.phone_number() }}
+	    {% if form.phone_number.errors %}
+		{% for error in form.phone_number.errors %}
+		    {{ error }}
+		{% endfor %}
+	    {% endif %}
+	</p>
+    <p>
+	    {{ form.address.label() }}
+	    {{ form.address() }}
+	    {% if form.address.errors %}
+		{% for error in form.address.errors %}
+		    {{ error }}
+		{% endfor %}
+	    {% endif %}
+	</p>
+	<p>
+	    {{ form.submit() }}
+	</p>
+
+    </form>
+{% endif %}
+
+    <p><a href="{{ url_for('update_acc') }}" class="btn btn-warning">Обновить аккаунт</a></p>
+    <p><a href="{{ url_for('post_rating') }}" class="btn btn-info">Добавить рецензию</a></p>
+    <p><a href="{{ url_for('logout') }}" class="btn btn-danger">Выйти из кабинета</a></p>
+
+<h3 align="center"> История заказов </h3>
+	{% for o in order %}
+        <div class="alert alert-info">
+            <h5> Id заказа: {{ o.id_zakaz }} </h5>
+			<h6> Время заказа: {{ o.time_zakaz }}</h6>
+        {% if o.id_promocode_used %}
+            <h6> Использовался промокод №{{ o.id_promocode_used }}</h6>
+        {% endif %}
+        </div>
+    {% endfor %}
+
+{% endblock %}
