@@ -5,126 +5,134 @@
 {% endblock %}
 
 {% block button %}
-    {% if flag_btn %}
-    <a class="btn btn-outline-primary" href="/account">Личный кабинет</a>
-    <a class="btn btn-outline-primary" href="/busket">Корзина</a>
-    {% if current_user.id == 5 %}
-	<a class="btn btn-outline-primary" href="/admin">Admin</a>
-	{% endif %}
+    <div class="buttons" align="right">
+        {% if flag_btn %}
+        <a class="btn btn-outline-primary" href="/account">Личный кабинет</a>
+        <a class="btn btn-outline-primary" href="/busket">Корзина</a>
+        {% if current_user.id == 5 %}
+        <a class="btn btn-outline-primary" href="/admin">Admin</a>
+        {% endif %}
 
-    {% else %}
-    <a class="btn btn-outline-primary" href="/signin">Регистрация</a>
-     <a class="btn btn-outline-primary" href="/login">Вход</a>
-    {% endif %}
+        {% else %}
+        <a class="btn btn-outline-primary" href="/signin">Регистрация</a>
+        <a class="btn btn-outline-primary" href="/login">Вход</a>
+        {% endif %}
+    </div>
 {% endblock %}
 
 
 {% block body %}
+<div class="shelves">
+    <h2 align="center"> Полки </h2>
+    <h6 align="center"> Выбирайте книгу по вкусу! </h6>
+    <br>
+    <div class="main-content">
+        <div class="filter-block">
+            <div class="Row1">
+                <form method="post">
 
-    <h1 align="center"> Полки </h1>
-    <h3 align="center"> Выбирайте книгу по вкусу! </h3>
-    <div class="Row">
-    <form method="post">
-
-    {{ form.csrf_token }}
-    <div class="Column">
-        <h5> Язык </h5>
-    <p>
-	    {{ form.russian.label() }}
-	    {{ form.russian() }}
-	</p>
-        <p>
-	    {{ form.english.label() }}
-	    {{ form.english() }}
-	</p>
-        <p>
-	    {{ form.japanese.label() }}
-	    {{ form.japanese() }}
-	</p>
-
-    </div>
-    <div class="Column">
-        <h5> Жанр </h5>
-        <p>
-	    {{ form.scipop.label() }}
-	    {{ form.scipop() }}
-	</p>
-        <p>
-	    {{ form.cookbook.label() }}
-	    {{ form.cookbook() }}
-	</p>
-        <p>
-	    {{ form.stories.label() }}
-	    {{ form.stories() }}
-	</p>
-        <p>
-	    {{ form.essay.label() }}
-	    {{ form.essay() }}
-	</p>
-        <p>
-	    {{ form.narrative.label() }}
-	    {{ form.narrative() }}
-	</p>
-        <p>
-	    {{ form.novel.label() }}
-	    {{ form.novel() }}
-	</p>
-    </div>
-        <div class="Column">
-            <h5> Страна </h5>
-            <p>
-	    {{ form.japan.label() }}
-	    {{ form.japan() }}
-	</p>
-            <p>
-	    {{ form.china.label() }}
-	    {{ form.china() }}
-	</p>
-            <p>
-	    {{ form.korea.label() }}
-	    {{ form.korea() }}
-	</p>
-            <p>
-	    {{ form.vietnam.label() }}
-	    {{ form.vietnam() }}
-	</p>
-
-    </div>
-
-        <div class="Column">
-            <h5> Сортировка </h5>
-            <p>
-	    {{ form.sort() }}
-	</p>
-
-
+                {{ form.csrf_token }}
+                <div class="Column1">
+                    <h6> Язык </h6>
+                    <div>
+                        {{ form.russian() }}
+                        {{ form.russian.label() }}
+                    </div>
+                    <div>
+                        {{ form.english() }}
+                        {{ form.english.label() }}
+                    </div>
+                    <div>
+                        {{ form.japanese() }}
+                        {{ form.japanese.label() }}
+                    </div>
+                </div>
+                <div class="Column1">
+                    <h6> Жанр </h6>
+                    <div>
+                        {{ form.scipop() }}
+                        {{ form.scipop.label() }}
+                    </div>
+                    <div>
+                        {{ form.cookbook() }}
+                        {{ form.cookbook.label() }}
+                    </div>
+                    <div>
+                        {{ form.stories() }}
+                        {{ form.stories.label() }}
+                    </div>
+                    <div>    
+                        {{ form.essay() }}
+                        {{ form.essay.label() }}
+                    </div>
+                    <div>    
+                        {{ form.narrative() }}
+                        {{ form.narrative.label() }}
+                    </div>
+                    <div>    
+                        {{ form.novel() }}
+                        {{ form.novel.label() }}
+                    </div>
+                </div>
+                <div class="Column1">
+                    <h6> Страна </h6>
+                    <div>
+                        {{ form.japan() }}
+                        {{ form.japan.label() }}
+                    </div>
+                    <div>    
+                        {{ form.china() }}
+                        {{ form.china.label() }}
+                    </div>
+                    <div>    
+                        {{ form.korea() }}
+                        {{ form.korea.label() }}
+                    </div>
+                    <div>    
+                        {{ form.vietnam() }}
+                        {{ form.vietnam.label() }}
+                    </div>
+                </div>
+                <div class="Column1">
+                    <h6> Сортировка </h6>
+                    <div>
+                        {{ form.sort() }}
+                    </div>
+                </div>
+                <div>
+                    {{ form.submit() }}
+                </div>
+                </form>
+            </div>
         </div>
-
-        <p>
-	    {{ form.submit() }}
-	</p>
-    </form>
-
-    </div>
-    {% for b in books %}
-        <div class="alert alert-info">
-            <h4>
-                {{ b.title }} - {{ b.author }}
-            </h4>
-            <h5> {{ b.price }}₽</h5>
-
-            <img src="{{url_for('static', filename=b.image)}}" alt="{{ b.title }}" class="Cover">
-            <a href="/shelves/{{ b.id_book }}" class="btn btn-warning">Детали</a>
-            {% if b.quantity == 0 %}
-            <h4> Нет в наличии! </h4>
-            {% else %}
-                {% if flag_btn %}
-                 <a href="/shelves/{{b.id_book}}/add" class="btn btn-danger">В корзину</a>
-                {% else %}
-                <a  href="/login" class="btn btn-danger">В корзину</a>
-                {% endif %}
-            {% endif %}
+        <div class="catalog-content">
+            {% for b in books %}
+                <div class="Column">
+                    <img src="{{url_for('static', filename=b.image)}}" alt="{{ b.title }}" class="Cover">
+                    <h4 class="book-name">
+                        {{ b.title }}
+                    </h4>
+                    <p class="author">
+                    {{ b.author }}
+                    </p>
+                    <p class="h52"> 
+                        {{ b.price }}₽
+                    </p>
+                    <a href="/shelves/{{ b.id_book }}" class="btn btn-danger">Детали</a>
+                    {% if b.quantity == 0 %}
+                    <h4> Нет в наличии! </h4>
+                    {% else %}
+                        {% if flag_btn %}
+                        <a href="/shelves/{{b.id_book}}/add" class="btn btn-danger">В корзину</a>
+                        {% else %}
+                        <a  href="/login" class="btn btn-danger">В корзину</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
+</div>    
+    
 
 {% endblock %}
