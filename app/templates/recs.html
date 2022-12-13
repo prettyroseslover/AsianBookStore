@@ -24,6 +24,47 @@
 <div class="recs">
     <h2 align="center"> Рекомендации </h2>
     <br>
+
+
+<!-- pop-up -->
+<div class="b-container">
+    
+    <a class="h3_new" href="javascript:PopUpShow()" style="text-decoration: none; color: #000000;">Помогите нам стать лучше!</a>
+</div>
+<div class="b-popup" id="popup1">
+    <div class="b-popup-content">
+        <div class="container_feedback">
+            <form action="/" method="post">
+
+                        <!-- Hidden Required Fields -->
+                <input type="hidden" name="project_name" value="Online-bookstore">
+                <input type="hidden" name="admin_email" value="arunakungurova@mail.com">
+                <input type="hidden" name="form_subject" value="feedback">
+                <!-- END Hidden Required Fields -->
+                <fieldset>
+                        <div class="name_email">
+                            <div class="left_info">
+                                <label id="name_for_popup"> Имя </label>
+                                <input name="Name" id="input_name" type="text" placeholder="Имя" required></input>
+                            </div>
+                            <div class="right_info">
+                                <label id="name_for_popup"> Email </label>
+                                <input name="Email" id="input_name" type="email" placeholder="Email" required></input>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="message">
+                            <label id="name_for_popup" align="left">Расскажите о том, что мы можем улучшить:</label>
+                            <textarea name="Message" style="width: 100%;" placeholder="Введите ваше сообщение"></textarea></div>
+                            <br>
+                            <button class="btn-send" formnovalidate type="submit">Отправить</button>
+                </fieldset>
+                </form>
+            </div>
+    <a href="javascript:PopUpHide()" class="previous round" style="margin-left: 10px; margin-bottom: 10px;">&#8249;</a>
+    </div>
+</div>
+
     {% for ind in range(sz) %}
         <div class="alert alert-warning">
             <div>
@@ -49,5 +90,23 @@
         </div>
     {% endfor %}
     </div>
+    
+    <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        //Скрыть PopUp при загрузке страницы    
+        PopUpHide();
+    });
+    //Функция отображения PopUp
+    function PopUpShow(){
+        $("#popup1").show();
+    }
+    //Функция скрытия PopUp
+    function PopUpHide(){
+        $("#popup1").hide();
+    }
+</script>
+<script src="static/main.js"></script>
 {% endblock %}
 

@@ -9,7 +9,7 @@
 
 {% block button %}
 <div class="buttons" align="right">
-    {% if flag_btn %}
+    {% if not flag_btn %}
     <a class="btn btn-outline-primary" href="/account">Личный кабинет</a>
     <a class="btn btn-outline-primary" href="/busket">Корзина</a>
 	{% if current_user.id == 5 %}

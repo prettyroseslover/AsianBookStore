@@ -139,19 +139,24 @@
 	<h3 align="center"> История заказов </h3>
 	<br>
 
-	<!-- <div class="busket_bottom_info">Вы пока ничего не заказывали</div> -->
-
+	{% if flag_for_orders %}
+	<p id="under" class="busket_bottom_info">Вы пока ничего не заказывали</p>
+	{% endif %}
+	{% if not flag_for_orders %}
 		{% for o in order %}
 			<!-- <div class="order_container"> -->
-			<div class="alert alert-info">
-				<div class="order_info"> Id заказа: {{ o.id_zakaz }} </div>
-				<div class="order_info"> Время заказа: {{ o.time_zakaz }}</div>
-			{% if o.id_promocode_used %}
-				<div class="order_info"> Использовался промокод №{{ o.id_promocode_used }}</div>
-			{% endif %}
-			</div>
+				
+					<div id="over" class="alert alert-info1">
+						<div class="order_info"> Id заказа: {{ o.id_zakaz }} </div>
+						<div class="order_info"> Время заказа: {{ o.time_zakaz }}</div>
+					{% if o.id_promocode_used %}
+						<div class="order_info"> Использовался промокод №{{ o.id_promocode_used }}</div>
+					{% endif %}
+					</div>
+				
 			<br>
 		{% endfor %}
+	{% endif %}
 
 </div>
 {% endblock %}
