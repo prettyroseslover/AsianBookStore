@@ -473,7 +473,6 @@ def telegram():
     Telegram = request.form['Telegram']
     msg_text = request.form['msg_text']
     output = 'Имя: ' + Name + '\nТелеграм: ' + Telegram + '\n\nОтзыв:\n' + msg_text
-    print(output)
     if Name and Telegram and msg_text:
         token = '5626665491:AAHZVovachxJXmOXAXPLfV47YI3hbyHLnfg'
         bot = telebot.TeleBot(token)
