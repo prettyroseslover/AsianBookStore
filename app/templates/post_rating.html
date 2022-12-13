@@ -5,40 +5,47 @@
 {% endblock %}
 
 {% block button %}
+<div class="buttons" align="right">
     <a class="btn btn-outline-primary" href="/account">Личный кабинет</a>
     <a class="btn btn-outline-primary" href="/busket">Корзина</a>
 	{% if current_user.id == 5 %}
 	<a class="btn btn-outline-primary" href="/admin">Admin</a>
 	{% endif %}
+</div>
 {% endblock %}
 
 
 {% block body %}
-
-    <h1 align="center"> Оставьте рецензию! </h1>
+<div class="post_rating_container">
+    <h2 class="headerlk" align="center"> Оставьте рецензию! </h2>
+	<br>
 
     <form method="post">
 
 {{ form.csrf_token }}
-	<p>
-        {{ form.book.label() }}
+	<div class="review_book">
+        Название книги
+		<!-- {{ form.book.label() }} -->
 	    {{ form.book() }}
-	</p>
-	<p>
-	    {{ form.rating.label() }}
+	</div>
+	<div class="review">
+		Поставьте свою оценку
+	    <!-- {{ form.rating.label() }} -->
 	    {{ form.rating() }}
-	</p>
-        <p>
+	</div>
+    <div class="review_comment">
 	    {{ form.comment.label() }}
 	    {{ form.comment() }}
-	</p>
-	<p>
+	</div>
+
+	<p class="submit_btn_placement">
 	    {{ form.submit() }}
 	</p>
 
     </form>
 
-    <p><a href="{{ url_for('account') }}">Назад</a></p>
+    <p><a href="{{ url_for('account') }}"class="previous round">&#8249;</a></p>
+	<br>
 
-
+</div>
 {% endblock %}

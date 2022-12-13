@@ -130,6 +130,7 @@ def hello_world():
     new_books.append(Books.query.get(15))
     new_books.append(Books.query.get(2))
     new_books.append(Books.query.get(11))
+    new_books.append(Books.query.get(1))
     return render_template("index.html", flag_btn=flag_btn, new_books=new_books)
 
 
@@ -198,14 +199,17 @@ def recs():
     rec = Rating.query.filter(Rating.comment.isnot("")).all()
     id_bs = []
     auth = []
+    pic = []
     for r in rec:
         title = Books.query.get(r.id_book_to_rate).title
         id_bs.append(title)
         author = User.query.get(r.id_client_by).username
         auth.append(author)
+        picture = Books.query.get(r.id_book_to_rate).image
+        pic.append(picture)
     sz = len(rec)
 
-    return render_template("recs.html", flag_btn=flag_btn, rec=rec, book=id_bs, auth=auth, sz=sz)
+    return render_template("recs.html", flag_btn=flag_btn, rec=rec, book=id_bs, auth=auth, sz=sz, pic=pic)
 
 
 regex = '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$'
@@ -290,6 +294,8 @@ def account():
         user.address = form.address.data
         db.session.commit()
         flag = False
+    #flag_for_orders = (Zakaz.books is None)
+    #flag_for_orders = (user.id > 5)
     my_orders = Zakaz.query.filter(Zakaz.id_client == current_user.id).all()
 
     return render_template('account.html', form=form, flag=flag, order=my_orders)
