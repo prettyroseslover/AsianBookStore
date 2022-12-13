@@ -34,13 +34,14 @@
 <div class="b-popup" id="popup1">
     <div class="b-popup-content">
         <div class="container_feedback">
+            <!--
             <form action="/" method="post">
 
-                        <!-- Hidden Required Fields -->
+                        commendHidden Required Fields
                 <input type="hidden" name="project_name" value="Online-bookstore">
                 <input type="hidden" name="admin_email" value="arunakungurova@mail.com">
                 <input type="hidden" name="form_subject" value="feedback">
-                <!-- END Hidden Required Fields -->
+                commendEND Hidden Required Fields
                 <fieldset>
                         <div class="name_email">
                             <div class="left_info">
@@ -48,8 +49,8 @@
                                 <input name="Name" id="input_name" type="text" placeholder="Имя" required></input>
                             </div>
                             <div class="right_info">
-                                <label id="name_for_popup"> Email </label>
-                                <input name="Email" id="input_name" type="email" placeholder="Email" required></input>
+                                <label id="name_for_popup"> Telegram </label>
+                                <input name="Telegram" id="input_name" placeholder="Telegram" required></input>
                             </div>
                         </div>
                         <br>
@@ -60,7 +61,40 @@
                             <button class="btn-send" formnovalidate type="submit">Отправить</button>
                 </fieldset>
                 </form>
-            </div>
+            -->
+
+            <form class="form-inline">
+                <fieldset>
+                <div class="name_email">
+                    <!--Name-->
+                    <div class="left_info">
+                    <label class="sr-only" for="Name">Имя</label>
+                    <input type="text" class="form-control" id="Name" placeholder="Имя">
+                    </div>
+                    <!--Telegram-->
+                    <div class="right_info">
+                    <label class="sr-only" for="Telegram">Telegram</label>
+                    <input type="text" class="form-control" id="Telegram" placeholder="Telegram">
+                    </div>
+                </div>
+                <br>
+                    <div class="message">
+                        <label id="name_for_popup" align="left">Расскажите о том, что мы можем улучшить:</label>
+                        <textarea name="Message" style="width: 100%;" id="msg_text" placeholder="Введите ваше сообщение"></textarea></div>
+                        <br>
+                    
+                    <!--Submit Button-->
+                    <button class="btn-send" formnovalidate type="submit">Отправить</button>
+
+                    </form>
+                    </br>
+                    <!-- <div id="output"></div> -->
+                    <p id="output"></p>
+                    </br>
+                </fieldset>
+
+                    <!-- moj -->
+                </div>
     <a href="javascript:PopUpHide()" class="previous round" style="margin-left: 10px; margin-bottom: 10px;">&#8249;</a>
     </div>
 </div>

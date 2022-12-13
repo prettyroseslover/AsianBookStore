@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect, flash, session
+from flask import Flask, render_template, url_for, request, redirect, flash, session, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 import re, os
@@ -7,6 +7,7 @@ from flask_login import LoginManager, UserMixin, login_required, current_user, l
 from form import LoginForm, FurtherInfo, BookFilter, RatingBook, CheckDiscount, RegistryForm
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
+import telebot
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -466,6 +467,21 @@ admin.add_view(ModelView(Rating, db.session))
 #         return redirect(url_for('log'))
 
 
+@app.route('/telegram',methods= ['POST'])
+def telegram():
+    Name = request.form['Name']
+    Telegram = request.form['Telegram']
+    msg_text = request.form['msg_text']
+    output = 'Имя: ' + Name + '\nТелеграм: ' + Telegram + '\n\nОтзыв:\n' + msg_text
+    print(output)
+    if Name and Telegram and msg_text:
+        token = '5626665491:AAHZVovachxJXmOXAXPLfV47YI3hbyHLnfg'
+        bot = telebot.TeleBot(token)
+        chat_id = '1283589339' #moj
+        #bot.send_message(chat_id, output)
+        return jsonify({'output':'Спасибо за отзыв!'})
+
+    return jsonify({'error' : 'Missing data!'})
 
 
 
