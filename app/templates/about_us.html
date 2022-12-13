@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block button %}
+<div class="buttons" align="right">
     {% if flag_btn %}
     <a class="btn btn-outline-primary" href="/account">Личный кабинет</a>
     <a class="btn btn-outline-primary" href="/busket">Корзина</a>
@@ -16,6 +17,7 @@
     <a class="btn btn-outline-primary" href="/signin">Регистрация</a>
      <a class="btn btn-outline-primary" href="/login">Вход</a>
     {% endif %}
+</div>
 {% endblock %}
 
 {% block body %}

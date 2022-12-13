@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block button %}
+<div class="buttons" align="right">
     {% if flag_btn %}
     <a class="btn btn-outline-primary" href="/account">Личный кабинет</a>
     <a class="btn btn-outline-primary" href="/busket">Корзина</a>
@@ -14,50 +15,57 @@
 
     {% else %}
     <a class="btn btn-outline-primary" href="/signin">Регистрация</a>
-     <a class="btn btn-outline-primary" href="/login">Вход</a>
+    <a class="btn btn-outline-primary" href="/login">Вход</a>
     {% endif %}
+</div>
 {% endblock %}
 
 
 {% block body %}
-
+<div class="login_container">
     <h1 align="center"> Войти </h1>
-
     {% if error %}
     <p class=error><strong>Произошла ошибка:</strong> {{ error }}</p>
     {% endif %}
+	<div class="container_login">
+    	<form method="post">
+			{{ form.csrf_token }}
+			<div>
+				{{ form.username.label() }}
+				<br>
+				{{ form.username() }}
+				{% if form.username.errors %}
+				{% for error in form.username.errors %}
+					{{ error }}
+				{% endfor %}
+				{% endif %}
+			</div>
+			<br>
+			<div>
+				{{ form.password.label() }}
+				{{ form.password() }}
+				{% if form.password.errors %}
+				{% for error in form.password.errors %}
+					{{ error }}
+				{% endfor %}
+				{% endif %}
+			</div>
+			<br>
+			<div>
+				{{ form.remember() }}
+				{{ form.remember.label() }}
+			</div>
+			<div>
+				{{ form.submit() }}
+			</div>
+		</form>
 
-    <form method="post">
-
-{{ form.csrf_token }}
-	<p>
-	    {{ form.username.label() }}
-	    {{ form.username() }}
-	    {% if form.username.errors %}
-		{% for error in form.username.errors %}
-		    {{ error }}
-		{% endfor %}
-	    {% endif %}
-	</p>
-	<p>
-	    {{ form.password.label() }}
-	    {{ form.password() }}
-	    {% if form.password.errors %}
-		{% for error in form.password.errors %}
-		    {{ error }}
-		{% endfor %}
-	    {% endif %}
-	</p>
-	<p>
-	    {{ form.remember.label() }}
-	    {{ form.remember() }}
-	</p>
-	<p>
-	    {{ form.submit() }}
-	</p>
-
-    </form>
-
-    <h3 align="center"> Если вы еще не зарегистрированы, это можно сделать <a href="/signin">здесь</a></h3>
+			<div>
+				<h3 align="center"> У меня ещё нет личного кабинета </h3>
+				<br><br>
+				<a class="submit" href="/signin" >Зарегистрироваться</a>
+			</div>
+	</div>
+</div>
 
 {% endblock %}
