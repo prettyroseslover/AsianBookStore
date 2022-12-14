@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect, flash, session, jsonify
+from flask import Flask, render_template, url_for, request, redirect, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 import re, os
@@ -7,7 +7,6 @@ from flask_login import LoginManager, UserMixin, login_required, current_user, l
 from form import LoginForm, FurtherInfo, BookFilter, RatingBook, CheckDiscount, RegistryForm
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
-import telebot
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -260,7 +259,7 @@ def log():
             login_user(user, remember=form.remember.data)
             return redirect(url_for('account'))
 
-        flash("Invalid username/password", 'error')
+        flash("Неверное имя пользователя или пароль", 'error')
         return redirect(url_for('log'))
     return render_template('login.html', form=form)
 
@@ -290,16 +289,19 @@ def account():
         if check_ph(form.phone_number.data):
             user.phone_number = form.phone_number.data
         else:
-            flash("Invalid number")
+            flash("Такого мобильного номера не существует")
             return render_template('account.html', form=form, flag=flag)
         user.address = form.address.data
         db.session.commit()
         flag = False
-    #flag_for_orders = (Zakaz.books is None)
-    #flag_for_orders = (user.id > 5)
-    my_orders = Zakaz.query.filter(Zakaz.id_client == current_user.id).all()
 
-    return render_template('account.html', form=form, flag=flag, order=my_orders)
+    # flag_for_orders = (Zakaz.books is None)
+    # flag_for_orders = (user.id > 5)
+    my_orders = Zakaz.query.filter(Zakaz.id_client == current_user.id).all()
+    flag_ord = len(my_orders)
+
+
+    return render_template('account.html', form=form, flag=flag, order=my_orders, flag_ord=flag_ord)
 
 
 @app.route('/update_acc', methods=['POST', 'GET'])
@@ -315,7 +317,7 @@ def update_acc():
         if check_ph(form.phone_number.data):
             user.phone_number = form.phone_number.data
         else:
-            flash("Invalid number")
+            flash("Такого мобильного номера не существует")
             return render_template('update_acc.html', form=form)
         user.address = form.address.data
         db.session.commit()
@@ -424,7 +426,7 @@ def logout():
         if str(i) in session:
             session.pop(str(i), None)
     logout_user()
-    flash("You have been logged out.")
+    flash("Вы вышли из системы")
     return redirect(url_for('log'))
 
 class MyModelView(ModelView):
@@ -442,7 +444,7 @@ class MyAdminIndexView(AdminIndexView):
             return True
         else: 
             print(current_user.id)
-            flash("You are not the admin")
+            flash("У вас нет прав админа")
             return False
     
     def inaccessible_callback(self, name, **kwargs):
@@ -467,20 +469,6 @@ admin.add_view(ModelView(Rating, db.session))
 #         return redirect(url_for('log'))
 
 
-@app.route('/telegram',methods= ['POST'])
-def telegram():
-    Name = request.form['Name']
-    Telegram = request.form['Telegram']
-    msg_text = request.form['msg_text']
-    output = 'Имя: ' + Name + '\nТелеграм: ' + Telegram + '\n\nОтзыв:\n' + msg_text
-    if Name and Telegram and msg_text:
-        token = '5626665491:AAHZVovachxJXmOXAXPLfV47YI3hbyHLnfg'
-        bot = telebot.TeleBot(token)
-        chat_id = '1283589339' #moj
-        bot.send_message(chat_id, output)
-        return jsonify({'output':'Спасибо за отзыв!'})
-
-    return jsonify({'error' : 'Missing data!'})
 
 
 
