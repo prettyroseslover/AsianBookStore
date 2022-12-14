@@ -43,6 +43,7 @@ html,body{
     text-decoration:none;
     color: #000000;
     margin-left:24px;
+    
 }
 .title{
     height: 146px;
@@ -268,6 +269,7 @@ h2{
     display: block;
     margin-bottom: 6px;
     text-align: center;
+    transition: 0.2s;
 }
 .btn-danger-2{
     width: 82px;
@@ -284,6 +286,7 @@ h2{
     display: block;
     margin-bottom: 6px;
     text-align: center;
+    transition: 0.2s;
 }
 h4{
     font-family: 'Montserrat';
@@ -353,6 +356,12 @@ h1{
     margin: 24px 0px 0 0;
     border-width: 2px;
     border-style: outset;
+    transition: 0.2s;
+}
+#submit:hover, .submit:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 #submit_reg, .submit_reg{
     height: 50px;
@@ -370,6 +379,11 @@ h1{
     margin: 0px 0px 0 0;
     border-width: 2px;
     border-style: outset;
+    transition: 0.2s;
+}
+#submit_reg:hover, .submit_reg:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 button {
     width: max-content;
@@ -499,6 +513,7 @@ h6{
     margin-top:16px;
     padding-top:30px;
     padding-bottom: 80px;
+    padding-right: 15px;
 }
 .h3_new{
     margin-top: 0px;
@@ -558,6 +573,7 @@ h6{
     display: block;
     margin-bottom: 6px;
     text-align: center;
+    transition: 0.2s;
 }
 .btn-danger-1:hover{
     background-color: #55268F;
@@ -620,10 +636,12 @@ h6{
     display: block;
     margin-bottom: 6px;
     text-align: center;
+    transition: 0.2s;
 }
 .btnlk:hover{
     color: #55268F;
     background-color:#ffffff
+    
 }
 .inf_about_user{
     margin-top: 30px;
@@ -751,10 +769,16 @@ h6{
     text-decoration: none;
     display: inline-block;
     padding: 0px 17px;
+    transition: 0.2s;
 
 }
 .round {
     border-radius: 50%;
+    transition: 0.2s;
+}
+.previous:hover, .round:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 .post_rating_container{
     width: 100%;
@@ -896,6 +920,12 @@ h6{
     display: block;
     margin-bottom: 6px;
     text-align: center;
+    transition: 0.2s;
+}
+.btn-delete:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 .promo_left{
     display: flex;
@@ -930,7 +960,7 @@ h6{
 .btn-buy{
     margin: 20px auto;
     width: 200px;
-    height: 36px;
+    height: 38px;
     background: #FBC22F;
     border-radius: 8px;
     text-decoration:none;
@@ -944,6 +974,11 @@ h6{
     display: block;
     margin-bottom: 6px;
     text-align: center;
+    transition: 0.2s;
+}
+.btn-buy:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 .busket_bottom_info{
     margin: 30 0 30 0;
@@ -955,9 +990,9 @@ h6{
 #under{
     position:relative;   
 }
-#over{
+/* #over{
     position:relative; 
-}
+} */
 .btn-buy:active {
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -1022,7 +1057,11 @@ h6{
     line-height: 15px;
     text-decoration:none;
     color: #000000;
-    
+    transition: 0.2s;
+}
+.btn-write:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 .b-container{
     width:100%;
@@ -1045,6 +1084,16 @@ h6{
     position: fixed;
     top:-10%;
 }
+.blocker{
+    width: 130%;
+    margin-left: -20%;
+    min-height: 110%;
+    background-color: rgba(0,0,0,0.3);
+    overflow: hidden;
+    position: fixed;
+    top: -10%;
+    z-index: -1;
+}
 .b-popup .b-popup-content{
     background-image: url(../Images/back_ground/grey.jpg);
     background-size: cover;
@@ -1056,7 +1105,9 @@ h6{
     padding:10px;
     border-radius:5px;
     box-shadow: 0px 0px 10px #000;
+    transition: 0.2s all;
 }
+
 .container_feedback{
     margin: auto;
     margin-bottom: 5%;
@@ -1067,7 +1118,9 @@ h6{
     text-align: center;
     justify-content: center;
     flex-direction: column;
+    transition: 0.2s;
 }
+
 ::placeholder{
     padding-top: 3px;
     font-family: 'Montserrat';
@@ -1104,6 +1157,7 @@ input{
     box-sizing: border-box;
     border: 1px solid #828282;
     border-radius: 5px;
+    font-family: 'Montserrat';
 }
 #input_name{
     width: 100%;
@@ -1114,19 +1168,7 @@ input{
     font-weight: 400;
     line-height: 27px;
 }
-.form-control{
-    width: 100%;
-    height: 30px;
-    font-size: 17px;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    line-height: 27px;
-}
 #name_for_popup{
-    margin-bottom: 5px;
-}
-.sr-only{
     margin-bottom: 5px;
 }
 textarea{
@@ -1144,6 +1186,7 @@ textarea{
     font-weight: 400;
     font-size: 17px;
     line-height: 27px;
+    resize: none;
 }
 .message{
     display: flex;
@@ -1281,4 +1324,40 @@ textarea{
     display:none;
     text-indent:-9999px;
     background: url(../Images/Buttons/icon_top.png) no-repeat;
+}
+#qr{
+    width:174px;
+height:174px;
+ /* border="0" */
+    background-image: url(../Images/Icons/qr-code.gif);
+}
+.cross{
+    font-size: 25px;
+    text-decoration: none;
+    color: #000;
+}
+.error{
+    width: 100%;
+    border-radius: 10px;
+    background-color: #CE6285;
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 5px;
+    font-size: 18px;
+    color: #fff;
+}
+.flashes{
+    width: 75%;
+    border-radius: 10px;
+    background-color: #CE6285;
+    text-align: center;
+    margin-bottom: 25px;
+    margin: 20px 13%;
+    padding: 5px;
+    font-size: 18px;
+    color: #fff;
+}
+.logo{
+    background-image: url(../Images/Icons/logo.jpg);
+    width: 50px;
 }
