@@ -29,7 +29,7 @@
 <!-- pop-up -->
 <div class="b-container" >
     <a class="h3_new" href="javascript:PopUpShow()" style="text-decoration: none; color: #000000;">Помогите нам стать лучше!</a></div>
-    <div class="b-popup" id="popup1">
+    <div class="b-popup" id="popup1" hidden>
         <div class="blocker" onclick="PopUpHide()"></div>
         <div class="b-popup-content">
             <a href="javascript:PopUpHide()" class="cross" style="margin-left: 95%; margin-bottom: 10px;">&#10007;</a>
@@ -99,18 +99,25 @@
     <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function(){
-        //Скрыть PopUp при загрузке страницы    
-        PopUpHide();
-    });
+    // $(document).ready(function(){
+    //     //Скрыть PopUp при загрузке страницы    
+    //     PopUpHide();
+    // });
     //Функция отображения PopUp
     function PopUpShow(){
         $("#popup1").show();
+        // $("#blocker").show();   
+        $("#b-popup").show();
+        // $("#b-popup-content").show();
+        // $("#container_feedback").show();
     }
     //Функция скрытия PopUp
     function PopUpHide(){
         $("#popup1").hide();
-
+        // $("#blocker").hide();
+        $("#b-popup").hide();
+        // $("#b-popup-content").hide();
+        // $("#container_feedback").hide();
     }
 
     // $(document).click(function(e){
