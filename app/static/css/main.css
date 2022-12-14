@@ -1075,7 +1075,7 @@ h6{
     text-decoration: none;
 }
 .b-popup{
-    
+    visibility: hidden;
     width:110%;
     margin-left: -20%;
     min-height:100%;
