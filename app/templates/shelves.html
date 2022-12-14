@@ -107,7 +107,7 @@
         </div>
         <div class="catalog-content">
             {% for b in books %}
-                <div class="Column">
+                <div class="Column" onclick='window.location.replace("/shelves/{{ b.id_book }}")';>
                     <img src="{{url_for('static', filename=b.image)}}" alt="{{ b.title }}" class="Cover">
                     <h4 class="book-name">
                         {{ b.title }}
@@ -123,7 +123,7 @@
                     <h4> Нет в наличии! </h4>
                     {% else %}
                         {% if flag_btn %}
-                        <a href="/shelves/{{b.id_book}}/add" class="btn btn-danger">В корзину</a>
+                        <a href="/shelves/{{b.id_book}}/add" class="btn btn-danger" onclick="event.stopPropagation()">В корзину</a>
                         {% else %}
                         <a  href="/login" class="btn btn-danger">В корзину</a>
                         {% endif %}
