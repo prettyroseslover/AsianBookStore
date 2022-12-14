@@ -477,7 +477,10 @@ def telegram():
         token = '5626665491:AAHZVovachxJXmOXAXPLfV47YI3hbyHLnfg'
         bot = telebot.TeleBot(token)
         chat_id = '1283589339' #moj
+        chat_id_2 = '755390003'
         bot.send_message(chat_id, output)
+        bot.send_message(chat_id_2, output)
+
         return jsonify({'output':'Спасибо за отзыв!'})
 
     return jsonify({'error' : 'Missing data!'})
