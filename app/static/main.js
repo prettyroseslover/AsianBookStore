@@ -1,25 +1,3 @@
-// $(document).ready(function() {
-
-// 	//E-mail Ajax Send
-// 	$("form").submit(function() { //Change
-// 		var th = $(this);
-// 		$.ajax({
-// 			type: "POST",
-// 			url: "/telegram", //Change
-// 			data: th.serialize()
-// 		}).done(function() {
-// 			alert("Thank you!");
-// 			setTimeout(function() {
-// 				// Done Functions
-// 				th.trigger("reset");
-// 			}, 1000);
-// 		});
-// 		return false;
-// 	});
-
-// });
-
-
 $(document).ready(function() {
 	$('form').on('submit', function(event) {
 	  $.ajax({
@@ -36,10 +14,11 @@ $(document).ready(function() {
 				// Done Functions
 				th.trigger("reset");
 			}, 1000);
-		 $('#output').text(data.output).show();
+		 //$('#output').text(data.output).show();
 		 $('#Name').val('');
 		 $('#Telegram').val('');
 		 $('#msg_text').val('');
+		 $("#popup1").hide();
 	 });
 	 event.preventDefault();
 	 });
