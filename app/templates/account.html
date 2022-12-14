@@ -135,13 +135,14 @@
 	</form>
 	{% endif %}
 
-
+    {% if flag_ord %}
 	<h3 align="center"> История заказов </h3>
+	{% endif %}
 	<br>
 
-	{% if flag_for_orders %}
+	<!-- {% if flag_for_orders %}
 	<p id="under" class="busket_bottom_info">Вы пока ничего не заказывали</p>
-	{% endif %}
+	{% endif %} -->
 	{% if not flag_for_orders %}
 		{% for o in order %}
 			<!-- <div class="order_container"> -->
