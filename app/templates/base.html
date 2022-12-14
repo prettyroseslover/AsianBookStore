@@ -12,7 +12,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <link rel="icon"  href="../static/Images/Icons/logo.jpg"></link>
     <script type="text/javascript">
       $(document).ready(function(){
        
@@ -33,13 +32,20 @@
       </script>
     <title> {% block title %}{% endblock %} </title>
 
-
+    {% with messages = get_flashed_messages() %}
+     {% if messages %}
+     <ul class=flashes>
+     {% for message in messages %}
+         <li>{{ message }}</li>
+        {% endfor %}
+     </ul>
+    {% endif %}
+    {% endwith %}
 
 </head>
 <body>
   <div class="title">
     <h5 class="title-header">На полках не пылятся</h5>
-    <div class="logo"></div>
     {% block button %}{% endblock %}
     <!-- <a class="btn btn-outline-primary" href="/signin">Регистрация</a>
    <a class="btn btn-outline-primary" href="/login">Вход</a> -->
@@ -52,16 +58,6 @@
       </ul>
     </nav> 
   </div>
-
-    {% with messages = get_flashed_messages() %}
-     {% if messages %}
-     <ul class=flashes>
-     {% for message in messages %}
-         <li>{{ message }}</li>
-        {% endfor %}
-     </ul>
-    {% endif %}
-    {% endwith %}
 
     {% block body %}
     

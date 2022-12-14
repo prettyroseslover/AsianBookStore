@@ -27,21 +27,21 @@
 
 
 <!-- pop-up -->
-<div class="b-container" >
+<div class="b-container">
     
-    <a class="h3_new" href="javascript:PopUpShow()" style="text-decoration: none; color: #000000;">Помогите нам стать лучше!</a></div>
+    <a class="h3_new" href="javascript:PopUpShow()" style="text-decoration: none; color: #000000;">Помогите нам стать лучше!</a>
+</div>
 <div class="b-popup" id="popup1">
-    <div class="blocker" onclick="PopUpHide()"></div>
-    <div class="b-popup-content" id="b-popup-content">
-        <a href="javascript:PopUpHide()" class="cross" style="margin-left: 95%; margin-bottom: 10px;">&#10007;</a>
+    <div class="b-popup-content">
         <div class="container_feedback">
+            <!--
             <form action="/" method="post">
 
-                        <!-- Hidden Required Fields -->
+                        commendHidden Required Fields
                 <input type="hidden" name="project_name" value="Online-bookstore">
                 <input type="hidden" name="admin_email" value="arunakungurova@mail.com">
                 <input type="hidden" name="form_subject" value="feedback">
-                <!-- END Hidden Required Fields -->
+                commendEND Hidden Required Fields
                 <fieldset>
                         <div class="name_email">
                             <div class="left_info">
@@ -49,8 +49,8 @@
                                 <input name="Name" id="input_name" type="text" placeholder="Имя" required></input>
                             </div>
                             <div class="right_info">
-                                <label id="name_for_popup"> Email </label>
-                                <input name="Email" id="input_name" type="email" placeholder="Email" required></input>
+                                <label id="name_for_popup"> Telegram </label>
+                                <input name="Telegram" id="input_name" placeholder="Telegram" required></input>
                             </div>
                         </div>
                         <br>
@@ -61,8 +61,41 @@
                             <button class="btn-send" formnovalidate type="submit">Отправить</button>
                 </fieldset>
                 </form>
-            </div>
-    <!-- <a href="javascript:PopUpHide()" class="previous round" style="margin-left: 10px; margin-bottom: 10px;">&#8249;</a> -->
+            -->
+
+            <form class="form-inline">
+                <fieldset>
+                <div class="name_email">
+                    <!--Name-->
+                    <div class="left_info">
+                    <label class="sr-only" for="Name">Имя</label>
+                    <input type="text" class="form-control" id="Name" placeholder="Имя">
+                    </div>
+                    <!--Telegram-->
+                    <div class="right_info">
+                    <label class="sr-only" for="Telegram">Telegram</label>
+                    <input type="text" class="form-control" id="Telegram" placeholder="Telegram">
+                    </div>
+                </div>
+                <br>
+                    <div class="message">
+                        <label id="name_for_popup" align="left">Расскажите о том, что мы можем улучшить:</label>
+                        <textarea name="Message" style="width: 100%;" id="msg_text" placeholder="Введите ваше сообщение"></textarea></div>
+                        <br>
+                    
+                    <!--Submit Button-->
+                    <button class="btn-send" formnovalidate type="submit">Отправить</button>
+
+                    </form>
+                    </br>
+                    <!-- <div id="output"></div> -->
+                    <p id="output"></p>
+                    </br>
+                </fieldset>
+
+                    <!-- moj -->
+                </div>
+    <a href="javascript:PopUpHide()" class="previous round" style="margin-left: 10px; margin-bottom: 10px;">&#8249;</a>
     </div>
 </div>
 
@@ -106,61 +139,7 @@
     //Функция скрытия PopUp
     function PopUpHide(){
         $("#popup1").hide();
-
     }
-
-    // $(document).click(function(e){
-    //     if($(e.target).closest("b-popup").length){
-    //         return;
-    //     }
-    //     $("b-popup").fadeOut();
-    // })
-
-    // let popupBG = document.querySelector('.b-popup-content');
-    // let popup = document.querySelector('.container_feedback');
-    // let openPopupButton = document.querySelector('b-container');
-
-    // openPopupButton((button) =>{
-    //     button.addEventListener('click',(e) =>{
-    //         e.preventDefault();
-    //         popupBG.classList.add('active');
-    //         popup.classList.add('active');
-    //     }
-    //     )
-    // }
-    // )
-    
-    const el= document.getElementById('b-popup-content');
-    
-    // document.addEventListener("click", function(event)
-    // {
-    //     if (!document.getElementsByClassName('b-popup-content')[0].contians(event.target)) {
-    //         console.log("YES")
-    //     }
-
-    //     console.log(event.target)
-    // }
-    // )
-
-
-// let popupBg = document.querySelector('.b-popup')
-// document.addEventListener('click', (e) =>{
-//     if(e.target === popupBg){
-//         PopUpHide;
-//     }
-// }
-// );
-
-    
-//     $(function($){
-//   $(b-container).mouseup(function (e){ // событие клика по веб-документу
-//     var div = $("#popup1"); // тут указываем ID элемента
-//     if (!div.is(e.target) // если клик был не по нашему блоку
-//         && div.has(e.target).length === 0) { // и не по его дочерним элементам
-//       div.hide(); // скрываем его
-//     }
-//   });
-// });
 </script>
 <script src="static/main.js"></script>
 {% endblock %}
