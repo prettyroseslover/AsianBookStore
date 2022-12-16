@@ -28,47 +28,9 @@
 
 <!-- pop-up -->
 <div class="b-container" >
-    <a class="h3_new" href="javascript:PopUpShow()" style="text-decoration: none; color: #000000;">Помогите нам стать лучше!</a></div>
-    <div class="b-popup" id="popup1" style="display:none">
-        <div class="blocker" onclick="PopUpHide()"></div>
-        <div class="b-popup-content">
-            <a href="javascript:PopUpHide()" class="cross" style="margin-left: 95%; margin-bottom: 10px;">&#10007;</a>
-            <div class="container_feedback">
-                <form class="form-inline">
-                    <fieldset>
-                    <div class="name_email">
-                        <!--Name-->
-                        <div class="left_info">
-                        <label class="sr-only" for="Name">Имя</label>
-                        <input type="text" class="form-control" id="Name" placeholder="Имя">
-                        </div>
-                        <!--Telegram-->
-                        <div class="right_info">
-                        <label class="sr-only" for="Telegram">Telegram</label>
-                        <input type="text" class="form-control" id="Telegram" placeholder="@имя_в_телеграме">
-                        </div>
-                    </div>
-                    <br>
-                        <div class="message">
-                            <label id="name_for_popup" align="left">Расскажите о том, что мы можем улучшить:</label>
-                            <textarea name="Message" style="width: 100%;" id="msg_text" placeholder="Введите ваше сообщение"></textarea></div>
-                            <br>
-                        
-                        <!--Submit Button-->
-                        <button class="btn-send" formnovalidate type="submit">Отправить</button>
-    
-                        </form>
-                        </br>
-                        <!-- <div id="output"></div> -->
-                        <p id="output"></p>
-                        </br>
-                    </fieldset>
-    
-                        <!-- moj -->
-                    </div>
-        
-        </div>
-    </div>
+	<a class="h3_new" href="javascript:PopUpShow()" style="text-decoration: none; color: #000000;">Помогите нам стать лучше!</a>
+</div>
+    <div class="b-popup" id="popup1" style="display:none"></div>
 
     {% for ind in range(sz) %}
         <div class="alert alert-warning">
@@ -105,6 +67,49 @@
     // });
     //Функция отображения PopUp
     function PopUpShow(){
+		
+       if(document.getElementById("popup1").innerHTML == ""){
+		$("#popup1").html(`div class="blocker" onclick="PopUpHide()"></div>
+        <div class="b-popup-content">
+            <a href="javascript:PopUpHide()" class="cross" style="margin-left: 95%; margin-bottom: 10px;">&#10007;</a>
+            <div class="container_feedback">
+                <form class="form-inline">
+                    <fieldset>
+                    <div class="name_email">
+                        <!--Name-->
+                        <div class="left_info">
+                        <label class="sr-only" for="Name">Имя</label>
+                        <input type="text" class="form-control" id="Name" placeholder="Имя">
+                        </div>
+                        <!--Telegram-->
+                        <div class="right_info">
+                        <label class="sr-only" for="Telegram">Telegram</label>
+                        <input type="text" class="form-control" id="Telegram" placeholder="@имя_в_телеграме">
+                        </div>
+                    </div>
+                    <br>
+                        <div class="message">
+                            <label id="name_for_popup" align="left">Расскажите о том, что мы можем улучшить:</label>
+                            <textarea name="Message" style="width: 100%;" id="msg_text" placeholder="Введите ваше сообщение"></textarea></div>
+                            <br>
+                        
+                        <!--Submit Button-->
+                        <button class="btn-send" formnovalidate type="submit">Отправить</button>
+    
+                        </form>
+                        </br>
+                        <!-- <div id="output"></div> -->
+                        <p id="output"></p>
+                        </br>
+                    </fieldset>
+    
+                        <!-- moj -->
+                    </div>
+        
+        </div>`);
+    }
+			
+	
         $("#popup1").show();
         // $("#blocker").show();   
         $("#b-popup").show();
