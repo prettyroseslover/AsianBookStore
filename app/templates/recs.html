@@ -65,11 +65,15 @@
     //     //Скрыть PopUp при загрузке страницы    
     //     PopUpHide();
     // });
+
+    // $(".h3_new").click(function(e){
+    // e.preventDefault();
+    // $(".b-popup").fadeIn(300,function(){$(this).focus();});
+//});
     //Функция отображения PopUp
-    function PopUpShow(){
-		
+    function PopUpShow(){		
        if(document.getElementById("popup1").innerHTML == ""){
-		$("#popup1").html(`div class="blocker" onclick="PopUpHide()"></div>
+		$("#popup1").html(`<div class="blocker" onclick="PopUpHide()"></div>
         <div class="b-popup-content">
             <a href="javascript:PopUpHide()" class="cross" style="margin-left: 95%; margin-bottom: 10px;">&#10007;</a>
             <div class="container_feedback">
@@ -109,20 +113,20 @@
         </div>`);
     }
 			
-	
-        $("#popup1").show();
-        // $("#blocker").show();   
-        $("#b-popup").show();
-        // $("#b-popup-content").show();
-        // $("#container_feedback").show();
+    //$('.close').click(function() {
+    //   $(".b-popup-content").fadeOut(300);
+    //});
+
+    $("#popup1").show();   
+    $("#b-popup").show();
     }
     //Функция скрытия PopUp
     function PopUpHide(){
         $("#popup1").hide();
-        // $("#blocker").hide();
         $("#b-popup").hide();
-        // $("#b-popup-content").hide();
-        // $("#container_feedback").hide();
+        // $(".b-popup-content").on('blur',function(){
+        //     $(this).fadeOut(300);
+        // });
     }
 
     // $(document).click(function(e){
