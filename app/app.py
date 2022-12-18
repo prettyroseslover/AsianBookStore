@@ -173,7 +173,8 @@ def shelves():
             books_available = books_available.order_by(Books.id_book)
 
     books_available = books_available.all()
-    return render_template("shelves.html", flag_btn=flag_btn, books=books_available, form=form)
+    flag_len=len(books_available)
+    return render_template("shelves.html", form=form, flag_btn=flag_btn, books=books_available, flag_len=flag_len)
 
 
 @app.route('/shelves/<int:id>')

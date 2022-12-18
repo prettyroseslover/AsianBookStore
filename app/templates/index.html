@@ -101,7 +101,7 @@ function currentSlide(index) {
 <div class="Row">
     <div class="col-container">
     {% for b in new_books %}
-        <div class="Column">
+        <div class="Column" onclick='window.location.replace("/shelves/{{ b.id_book }}")';>
             <img src="{{url_for('static', filename=b.image)}}" alt="{{ b.title }}" class="Cover">
             <h4 class="book-name">
                 {{ b.title }}
@@ -117,9 +117,9 @@ function currentSlide(index) {
             <h4> Нет в наличии! </h4>
             {% else %}
                 {% if flag_btn %}
-                <a class="btn btn-danger" href="/shelves/{{b.id_book}}/add">В корзину</a>
+                <a class="btn btn-danger" href="/shelves/{{b.id_book}}/add" onclick="event.stopPropagation()">Купить</a>
                 {% else %}
-                <a class="btn btn-danger" href="/login">В корзину</a>
+                <a class="btn btn-danger" href="/login">Купить</a>
                 {% endif %}
             {% endif %}
         </div>
