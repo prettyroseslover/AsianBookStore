@@ -110,8 +110,8 @@
             {%else%}
             <div class="notification">
             <h3_new>Книги не найдены, попробуйте изменить параметры поиска</h3_new>
-            {% endif %}
             </div>
+            {% endif %}
             {% for b in books %}
                 <div class="Column" onclick='window.location.replace("/shelves/{{ b.id_book }}")';>
                     <img src="{{url_for('static', filename=b.image)}}" alt="{{ b.title }}" class="Cover">
