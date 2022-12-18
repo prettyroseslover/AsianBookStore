@@ -361,7 +361,12 @@ h1{
     border-style: outset;
     transition: 0.2s;
 }
-#submit:hover, .submit:hover{
+#submit:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+.submit:hover{
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     cursor: pointer;
@@ -391,7 +396,6 @@ h1{
 button {
     width: max-content;
     height: 50px;
-    width: 100%;
     background: #FBC22F;
     border-radius: 10px;
     border-color: #FBC22F;
@@ -518,21 +522,9 @@ h6{
     padding-bottom: 80px;
     padding-right: 15px;
 }
-#h3_new{
+.h3_new{
     margin-top: 0px;
-    margin-bottom: 0px;
-    /* width: 35%; */
-    height: 15px;
-    background: #F1B720;
-    border-radius: 14px;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 5px;
-    cursor: pointer;
-    color: #000000;
-    border: none;
+    margin-bottom: 30px;
 }
 .h1_new{
     font-weight: 400;
@@ -606,11 +598,11 @@ h6{
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
-#submit,.submit:hover{
+/* #submit:hover,.submit:hover{
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-}
+} */
 .account_container{
     width: 100%;
     background-image: url(../Images/back_ground/account.jpg);
@@ -964,6 +956,7 @@ h6{
     background: #FFFFFF;
     border: 1px solid #828282;
     border-radius: 5px;
+    padding-left:10px;
 }
 .sum{
     margin-top: 20px;
@@ -1378,4 +1371,27 @@ height:174px;
 .logo{
     background-image: url(../Images/Icons/logo.jpg);
     width: 50px;
+}
+#Name{
+    padding-left: 10px;
+    width: 100%;
+    height: 30px;
+    font-size: 17px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27px;
+}
+#Telegram{
+    padding-left: 10px;
+    width: 100%;
+    height: 30px;
+    font-size: 17px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 27px;
+}
+.notification{
+    margin-right: 20%;
 }

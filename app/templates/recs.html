@@ -35,7 +35,7 @@
     {% for ind in range(sz) %}
         <div class="alert alert-warning">
             <div>
-                <img src="{{url_for('static', filename=pic[ind])}}" alt="{{ pic[ind]}}" class="Cover">
+                <a href="/shelves/{{rec[ind].id_book_to_rate}}"><img src="{{url_for('static', filename=pic[ind])}}" alt="{{ pic[ind]}}" class="Cover" ></a>
             </div>
             <div>
                 <h3 align="left" class="h3_new">
