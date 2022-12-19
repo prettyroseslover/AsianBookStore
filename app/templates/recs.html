@@ -27,11 +27,57 @@
 
 
 <!-- pop-up -->
-<div class="b-container" >
-    <button type="button" id="h3_new" onclick="javascript:PopUpShow()" style="text-decoration: none; color: #000000;">Помогите нам стать лучше!</button>
-</div>
-    <div class="b-popup" id="popup1" style="display:none"></div>
 
+
+<div class="b-container" >
+
+ <!-- Trigger/Open The Modal -->
+<button id="otziv_button">Помогите нам стать лучше!</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+     <div class="modal-content"> <!-- class="b-popup-content" -->
+      <span class="close">&#10007;</span>      
+            <div class="container_feedback">
+                <form class="form-inline">
+                    <fieldset>
+                    <div class="name_email">
+                        <!--Name-->
+                        <div class="left_info">
+                        <label class="sr-only" for="Name">Имя</label>
+                        <input type="text" class="form-control" id="Name" placeholder="Имя">
+                        </div>
+                        <!--Telegram-->
+                        <div class="right_info">
+                        <label class="sr-only" for="Telegram">Telegram</label>
+                        <input type="text" class="form-control" id="Telegram" placeholder="@имя_в_телеграме">
+                        </div>
+                    </div>
+                    <br>
+                        <div class="message">
+                            <label id="name_for_popup" align="left">Расскажите о том, что мы можем улучшить:</label>
+                            <textarea name="Message" style="width: 100%;" id="msg_text" placeholder="Введите ваше сообщение"></textarea></div>
+                            <br>
+                        
+                        <!--Submit Button-->
+                        <button class="btn-send" formnovalidate onclick="console.log("zdr")" type="submit">Отправить</button>
+    
+                        </form>
+                        </br>
+                        <!-- <div id="output"></div> -->
+                        <p id="output"></p>
+                        </br>
+                    </fieldset>
+    
+                        <!-- moj -->
+                    </div>
+    </div>      
+</div>
+</div>
+   
+   
     {% for ind in range(sz) %}
         <div class="alert alert-warning">
             <div>
@@ -61,127 +107,40 @@
     <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
-    // $(document).ready(function(){
-    //     //Скрыть PopUp при загрузке страницы    
-    //     PopUpHide();
-    // });
-
-    // $(".h3_new").click(function(e){
-    // e.preventDefault();
-    // $(".b-popup").fadeIn(300,function(){$(this).focus();});
-//});
-    //Функция отображения PopUp
-    function PopUpShow(){		
-       if(document.getElementById("popup1").innerHTML == ""){
-		$("#popup1").html(`<div class="blocker" onclick="PopUpHide()"></div>
-        <div class="b-popup-content">
-            <a href="javascript:PopUpHide()" class="cross" style="margin-left: 95%; margin-bottom: 10px;">&#10007;</a>
-            <div class="container_feedback">
-                <form class="form-inline">
-                    <fieldset>
-                    <div class="name_email">
-                        <!--Name-->
-                        <div class="left_info">
-                        <label class="sr-only" for="Name">Имя</label>
-                        <input type="text" class="form-control" id="Name" placeholder="Имя">
-                        </div>
-                        <!--Telegram-->
-                        <div class="right_info">
-                        <label class="sr-only" for="Telegram">Telegram</label>
-                        <input type="text" class="form-control" id="Telegram" placeholder="@имя_в_телеграме">
-                        </div>
-                    </div>
-                    <br>
-                        <div class="message">
-                            <label id="name_for_popup" align="left">Расскажите о том, что мы можем улучшить:</label>
-                            <textarea name="Message" style="width: 100%;" id="msg_text" placeholder="Введите ваше сообщение"></textarea></div>
-                            <br>
-                        
-                        <!--Submit Button-->
-                        <button class="btn-send" formnovalidate type="submit">Отправить</button>
-    
-                        </form>
-                        </br>
-                        <!-- <div id="output"></div> -->
-                        <p id="output"></p>
-                        </br>
-                    </fieldset>
-    
-                        <!-- moj -->
-                    </div>
-        
-        </div>`);
-    }
-			
-    //$('.close').click(function() {
-    //   $(".b-popup-content").fadeOut(300);
-    //});
-
-    $("#popup1").show();   
-    $("#b-popup").show();
-    }
-    //Функция скрытия PopUp
-    function PopUpHide(){
-        $("#popup1").hide();
-        $("#b-popup").hide();
-        // $(".b-popup-content").on('blur',function(){
-        //     $(this).fadeOut(300);
-        // });
-    }
-
-    // $(document).click(function(e){
-    //     if($(e.target).closest("b-popup").length){
-    //         return;
-    //     }
-    //     $("b-popup").fadeOut();
-    // })
-
-    // let popupBG = document.querySelector('.b-popup-content');
-    // let popup = document.querySelector('.container_feedback');
-    // let openPopupButton = document.querySelector('b-container');
-
-    // openPopupButton((button) =>{
-    //     button.addEventListener('click',(e) =>{
-    //         e.preventDefault();
-    //         popupBG.classList.add('active');
-    //         popup.classList.add('active');
-    //     }
-    //     )
-    // }
-    // )
-    
+   
     const el= document.getElementById('b-popup-content');
     
-    // document.addEventListener("click", function(event)
-    // {
-    //     if (!document.getElementsByClassName('b-popup-content')[0].contians(event.target)) {
-    //         console.log("YES")
-    //     }
 
-    //     console.log(event.target)
-    // }
-    // )
-
-
-// let popupBg = document.querySelector('.b-popup')
-// document.addEventListener('click', (e) =>{
-//     if(e.target === popupBg){
-//         PopUpHide;
-//     }
-// }
-// );
-
-    
-//     $(function($){
-//   $(b-container).mouseup(function (e){ // событие клика по веб-документу
-//     var div = $("#popup1"); // тут указываем ID элемента
-//     if (!div.is(e.target) // если клик был не по нашему блоку
-//         && div.has(e.target).length === 0) { // и не по его дочерним элементам
-//       div.hide(); // скрываем его
-//     }
-//   });
-// }); кйб
 </script>
 <script src="static/main.js"></script>
-{% endblock %}
 
+
+<script> //Модал окно
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    
+    // Get the button that opens the modal
+    var btn = document.getElementById("otziv_button");
+    
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+        modal.style.display = "none";
+        }
+    }
+    </script>
+    
+    {% endblock %}

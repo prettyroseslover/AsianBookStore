@@ -14,11 +14,13 @@ $(document).ready(function() {
 				// Done Functions
 				th.trigger("reset");
 			}, 1000);
-		 //$('#output').text(data.output).show();
+		 $('#output').text(data.output).show();
 		 $('#Name').val('');
 		 $('#Telegram').val('');
 		 $('#msg_text').val('');
-		 $("#popup1").hide();
+		 document.getElementById("myModal").style.display = "none";
+		 //$("#popup1").hide();
+
 	 });
 	 event.preventDefault();
 	 });
